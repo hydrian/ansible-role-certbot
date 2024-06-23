@@ -1,0 +1,36 @@
+---
+#certbot_domains: []
+certbot_agree_tos: false
+certbot_deploy_script: null
+certbot_dns_provider: null
+certbot_dns_providers:
+  route53:
+    option: ['--dns-route53']
+    environment_vars:
+      AWS_CONFIG_FILE: 
+certbot_dns_propigation: 30
+certbot_email: null
+certbot_mode: "certonly"
+certbot_pre_script: null
+certbot_post_script: null
+certbot_use_ubuntu_ppa: false
+
+certbot_integration: 'standalone'
+certbot_integrations:
+  apache:
+    option: ['--apache']
+    deb_package: python3-certbot-apache
+  nginix:
+    option: ['--nginx']
+    deb_package: python3-certbot-nginx
+  standalone:
+    option: ['--standalone']
+    deb_package: null
+certbot_verification_method: "httop"
+certbot_verification_types:
+  dns_01: "dns-01"
+  http_01: "http-01"
+
+
+
+

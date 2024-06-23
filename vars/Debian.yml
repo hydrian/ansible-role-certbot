@@ -1,0 +1,7 @@
+cerbot_bin: "/usr/bin/certbot"
+certbot_packages: 
+  - "python3-certbot"
+certbot_apache2_packages:
+  - "python3-certbot-apache"
+certbot_nginx_packages:
+  - "python3-certbot-nginx"

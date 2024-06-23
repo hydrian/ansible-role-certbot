@@ -1,0 +1,38 @@
+---
+
+- name: "Adding certbot PPA for Ubuntu"
+  apt_repository: 
+    repo: certbot/certbot
+  when: certbot_use_ubuntu_ppa
+
+- name: "Installer certbot package"
+  apt:
+    package: "{{certbot_package}}"
+    state: present
+    update_cache: true
+- name: "Installer certbot apache integration"
+  apt:
+    package: "{{certbot_packages_apache2}}"
+    state: present
+
+  when: certbot_integration_apache2
+
+- name: "Installer certbot nginx integration"
+  apt:
+    package: "{{certbot_packages_nginx}}"
+    state: present
+  when: certbot_integration_nginx
+
+- name: "Installing dns provider integration"
+  apt:
+    package: "python3-dns-{{item}}"
+    state: present
+  loop: "{{certbox_dns_providers}}"
+  when: (certbox_dns_providers|lenth>0)
+
+- name: "Setting up certbot"
+  shell: "{{certbot_bin}}"
+    args: [ '--non-interactive'] 
+
+
+
